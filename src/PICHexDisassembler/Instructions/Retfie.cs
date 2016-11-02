@@ -2,7 +2,7 @@
 {
     public class Retfie : Instruction
     {
-        public Retfie(string data) : base(data)
+        public Retfie(int data) : base(data)
         {
         }
 

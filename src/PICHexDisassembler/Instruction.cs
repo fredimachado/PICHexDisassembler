@@ -2,9 +2,9 @@
 {
     public abstract class Instruction
     {
-        protected readonly string data;
+        protected readonly int data;
 
-        public Instruction(string data)
+        public Instruction(int data)
         {
             this.data = data;
         }

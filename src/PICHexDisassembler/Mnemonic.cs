@@ -6,25 +6,24 @@ namespace PICHexDisassembler
 {
     internal class Mnemonic
     {
-        private static Dictionary<string, Type> mnemonicMapping = new Dictionary<string, Type>
+        private static MnemonicMapping mnemonicMapping = new MnemonicMapping
         {
-            { "101", typeof(Goto) },
-            { "100", typeof(Call) },
-            { "00000000001001", typeof(Retfie) },
+            { 0x2800, 0xF800, typeof(Goto) },   // 0010100000000000
+            { 0x2000, 0xF800, typeof(Call) },   // 0010000000000000
+            { 0x0009, 0xFFFF, typeof(Retfie) }, // 0000000000001001
         };
 
-        internal static Instruction Parse(int[] dataBytes)
+        internal static Instruction Parse(byte[] dataBytes)
         {
             var data1 = dataBytes[0];
             var data2 = dataBytes[1];
-
-            var data = Convert.ToString(data1, 2).PadLeft(6, '0') + Convert.ToString(data2, 2).PadLeft(8, '0');
+            var word = (short)(data1 << 8 | data2);
 
             foreach (var item in mnemonicMapping)
             {
-                if (data.StartsWith(item.Key))
+                if ((word & item.Item2) == item.Item1)
                 {
-                    return (Instruction)Activator.CreateInstance(item.Value, data);
+                    return (Instruction)Activator.CreateInstance(item.Item3, word);
                 }
             }
 

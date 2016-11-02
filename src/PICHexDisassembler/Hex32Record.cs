@@ -4,7 +4,7 @@ namespace PICHexDisassembler
 {
     public class Hex32Record
     {
-        public Hex32Record(int byteCount, int address, int recordType, int[][] dataBytes, int checksum)
+        public Hex32Record(byte byteCount, int address, byte recordType, byte[][] dataBytes, byte checksum)
         {
             ByteCount = byteCount;
             Address = address;
@@ -20,11 +20,11 @@ namespace PICHexDisassembler
             }
         }
 
-        public int ByteCount { get; }
+        public byte ByteCount { get; }
         public int Address { get; }
-        public int RecordType { get; }
-        public int[][] DataBytes { get; }
-        public int Checksum { get; }
+        public byte RecordType { get; }
+        public byte[][] DataBytes { get; }
+        public byte Checksum { get; }
 
         public Instruction[] Mnemonics { get; }
     }

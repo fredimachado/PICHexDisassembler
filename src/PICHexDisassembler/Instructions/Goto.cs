@@ -4,16 +4,16 @@ namespace PICHexDisassembler.Instructions
 {
     public class Goto : Instruction
     {
-        private readonly string address;
+        private readonly int address;
 
-        public Goto(string data) : base(data)
+        public Goto(int data) : base(data)
         {
-            address = data.Substring(3);
+            address = data & 0x01FF;
         }
 
         public override string ToString()
         {
-            return GetType().Name.ToUpper() + " 0x" + Convert.ToInt32(address, 2).ToString("X2");
+            return GetType().Name.ToUpper() + " 0x" + address.ToString("X2");
         }
     }
 }

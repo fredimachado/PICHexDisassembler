@@ -9,13 +9,13 @@
                 line = line.Substring(1);
             }
 
-            var byteCount = int.Parse(line.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+            var byteCount = byte.Parse(line.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
             var address = int.Parse(line.Substring(2, 4), System.Globalization.NumberStyles.HexNumber);
-            var recordType = int.Parse(line.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
-            var checksum = int.Parse(line.Substring(line.Length - 2), System.Globalization.NumberStyles.HexNumber);
+            var recordType = byte.Parse(line.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+            var checksum = byte.Parse(line.Substring(line.Length - 2), System.Globalization.NumberStyles.HexNumber);
 
             var wordsCount = byteCount / 2;
-            var dataBytes = new int[wordsCount][];
+            var dataBytes = new byte[wordsCount][];
 
             for (int i = 0; i < wordsCount; i++)
             {
@@ -27,11 +27,11 @@
             return new Hex32Record(byteCount, address, recordType, dataBytes, checksum);
         }
 
-        private int[] GetNextTwoBytesReversed(string line, int startIndex)
+        private byte[] GetNextTwoBytesReversed(string line, int startIndex)
         {
-            var bytes = new int[2];
-            bytes[0] = int.Parse(line.Substring(startIndex + 2, 2), System.Globalization.NumberStyles.HexNumber);
-            bytes[1] = int.Parse(line.Substring(startIndex, 2), System.Globalization.NumberStyles.HexNumber);
+            var bytes = new byte[2];
+            bytes[0] = byte.Parse(line.Substring(startIndex + 2, 2), System.Globalization.NumberStyles.HexNumber);
+            bytes[1] = byte.Parse(line.Substring(startIndex, 2), System.Globalization.NumberStyles.HexNumber);
             return bytes;
         }
     }

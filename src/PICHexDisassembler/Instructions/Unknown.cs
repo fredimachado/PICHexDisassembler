@@ -4,7 +4,7 @@
     {
         private static Unknown instance;
 
-        private Unknown() : base(null)
+        private Unknown() : base(0)
         {
         }
 
