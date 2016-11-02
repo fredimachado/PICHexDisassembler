@@ -4,7 +4,7 @@ namespace PICHexDisassembler.Instructions
 {
     public class Goto : Instruction
     {
-        private string address;
+        private readonly string address;
 
         public Goto(string data) : base(data)
         {
@@ -13,7 +13,7 @@ namespace PICHexDisassembler.Instructions
 
         public override string ToString()
         {
-            return "GOTO 0x" + Convert.ToInt32(address, 2).ToString("X2");
+            return GetType().Name.ToUpper() + " 0x" + Convert.ToInt32(address, 2).ToString("X2");
         }
     }
 }
