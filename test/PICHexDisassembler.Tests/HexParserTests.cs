@@ -65,5 +65,15 @@ namespace PICHexDisassembler.Tests
 
             Assert.IsType(typeof(Goto), parsed.Mnemonics[0]);
         }
+
+        [Fact]
+        public void ParseGotoInstruction()
+        {
+            var line = ":020000000528D1";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.Equal("GOTO 0x05", parsed.Mnemonics[0].ToString());
+        }
     }
 }

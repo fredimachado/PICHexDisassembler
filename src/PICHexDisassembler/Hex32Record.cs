@@ -14,7 +14,7 @@ namespace PICHexDisassembler
 
             Mnemonics = new[]
             {
-                new Goto()
+                Mnemonic.Parse(DataBytes[0])
             };
         }
 
