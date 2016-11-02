@@ -14,13 +14,16 @@
             var recordType = int.Parse(line.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
             var checksum = int.Parse(line.Substring(line.Length - 2), System.Globalization.NumberStyles.HexNumber);
 
-            var dataBytes = new int[1][];
+            var dataBytes = new int[byteCount / 2][];
 
-            dataBytes[0] = new[]
+            for (int i = 0; i < byteCount / 2; i++)
             {
-                int.Parse(line.Substring(8 + 2, 2), System.Globalization.NumberStyles.HexNumber),
-                int.Parse(line.Substring(8, 2), System.Globalization.NumberStyles.HexNumber)
-            };
+                var baseIndex = 8 + (i * 4);
+
+                dataBytes[i] = new int[2];
+                dataBytes[i][0] = int.Parse(line.Substring(baseIndex + 2, 2), System.Globalization.NumberStyles.HexNumber);
+                dataBytes[i][1] = int.Parse(line.Substring(baseIndex, 2), System.Globalization.NumberStyles.HexNumber);
+            }
 
             return new Hex32Record(byteCount, address, recordType, dataBytes, checksum);
         }

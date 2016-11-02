@@ -75,5 +75,41 @@ namespace PICHexDisassembler.Tests
 
             Assert.Equal("GOTO 0x05", parsed.Mnemonics[0].ToString());
         }
+
+        [Fact]
+        public void ParseLongData()
+        {
+            var line = ":1000080009002C2083160313861283120313861605";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.Equal(16, parsed.ByteCount);
+            Assert.Equal(8, parsed.Address);
+            Assert.Equal(0, parsed.RecordType);
+
+            Assert.Equal(0x00, parsed.DataBytes[0][0]);
+            Assert.Equal(0x09, parsed.DataBytes[0][1]);
+
+            Assert.Equal(0x20, parsed.DataBytes[1][0]);
+            Assert.Equal(0x2C, parsed.DataBytes[1][1]);
+
+            Assert.Equal(0x16, parsed.DataBytes[2][0]);
+            Assert.Equal(0x83, parsed.DataBytes[2][1]);
+
+            Assert.Equal(0x13, parsed.DataBytes[3][0]);
+            Assert.Equal(0x03, parsed.DataBytes[3][1]);
+
+            Assert.Equal(0x12, parsed.DataBytes[4][0]);
+            Assert.Equal(0x86, parsed.DataBytes[4][1]);
+
+            Assert.Equal(0x12, parsed.DataBytes[5][0]);
+            Assert.Equal(0x83, parsed.DataBytes[5][1]);
+
+            Assert.Equal(0x13, parsed.DataBytes[6][0]);
+            Assert.Equal(0x03, parsed.DataBytes[6][1]);
+
+            Assert.Equal(0x16, parsed.DataBytes[7][0]);
+            Assert.Equal(0x86, parsed.DataBytes[7][1]);
+        }
     }
 }
