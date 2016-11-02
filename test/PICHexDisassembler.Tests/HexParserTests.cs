@@ -111,5 +111,15 @@ namespace PICHexDisassembler.Tests
             Assert.Equal(0x16, parsed.DataBytes[7][0]);
             Assert.Equal(0x86, parsed.DataBytes[7][1]);
         }
+
+        [Fact]
+        public void ParseRetfieMnemonic()
+        {
+            var line = ":1000080009002C2083160313861283120313861605";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.IsType(typeof(Retfie), parsed.Mnemonics[0]);
+        }
     }
 }
