@@ -8,9 +8,9 @@ namespace PICHexDisassembler
     {
         private static MnemonicMapping mnemonicMapping = new MnemonicMapping
         {
-            { 0x2800, 0xF800, typeof(Goto) },   // 0010100000000000
-            { 0x2000, 0xF800, typeof(Call) },   // 0010000000000000
-            { 0x0009, 0xFFFF, typeof(Retfie) }, // 0000000000001001
+            { 0x2800, 0xF800, typeof(Goto) },   // mask: 0010100000000000 opcodeMask: 1111100000000000
+            { 0x2000, 0xF800, typeof(Call) },   // mask: 0010000000000000 opcodeMask: 1111100000000000
+            { 0x0009, 0xFFFF, typeof(Retfie) }, // mask: 0000000000001001 opcodeMask: 1111111111111111
         };
 
         internal static Instruction Parse(byte[] dataBytes)
