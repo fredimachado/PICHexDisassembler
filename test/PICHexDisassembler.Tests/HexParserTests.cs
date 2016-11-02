@@ -43,5 +43,16 @@ namespace PICHexDisassembler.Tests
 
             Assert.Equal(0xD1, parsed.Checksum);
         }
+
+        [Fact]
+        public void ParseDataBytes()
+        {
+            var line = ":020000000528D1";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.Equal(0x28, parsed.DataBytes[0][0]);
+            Assert.Equal(0x05, parsed.DataBytes[0][1]);
+        }
     }
 }
