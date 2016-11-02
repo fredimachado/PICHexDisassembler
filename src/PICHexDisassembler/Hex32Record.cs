@@ -1,4 +1,6 @@
-﻿namespace PICHexDisassembler
+﻿using PICHexDisassembler.Instructions;
+
+namespace PICHexDisassembler
 {
     public class Hex32Record
     {
@@ -9,6 +11,11 @@
             RecordType = recordType;
             DataBytes = dataBytes;
             Checksum = checksum;
+
+            Mnemonics = new[]
+            {
+                new Goto()
+            };
         }
 
         public int ByteCount { get; }
@@ -16,5 +23,7 @@
         public int RecordType { get; }
         public int[][] DataBytes { get; }
         public int Checksum { get; }
+
+        public Instruction[] Mnemonics { get; }
     }
 }

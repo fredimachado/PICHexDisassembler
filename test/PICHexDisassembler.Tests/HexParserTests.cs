@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using PICHexDisassembler.Instructions;
+using Xunit;
 
 namespace PICHexDisassembler.Tests
 {
@@ -53,6 +54,16 @@ namespace PICHexDisassembler.Tests
 
             Assert.Equal(0x28, parsed.DataBytes[0][0]);
             Assert.Equal(0x05, parsed.DataBytes[0][1]);
+        }
+
+        [Fact]
+        public void ParseGotoMnemonic()
+        {
+            var line = ":020000000528D1";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.IsType(typeof(Goto), parsed.Mnemonics[0]);
         }
     }
 }
