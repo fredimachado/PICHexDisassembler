@@ -14,9 +14,10 @@
             var recordType = int.Parse(line.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
             var checksum = int.Parse(line.Substring(line.Length - 2), System.Globalization.NumberStyles.HexNumber);
 
-            var dataBytes = new int[byteCount / 2][];
+            var wordsCount = byteCount / 2;
+            var dataBytes = new int[wordsCount][];
 
-            for (int i = 0; i < byteCount / 2; i++)
+            for (int i = 0; i < wordsCount; i++)
             {
                 var startIndex = 8 + (i * 4);
 

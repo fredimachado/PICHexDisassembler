@@ -123,13 +123,33 @@ namespace PICHexDisassembler.Tests
         }
 
         [Fact]
-        public void ParseRetfieToString()
+        public void ReturnsRetfieToString()
         {
             var line = ":1000080009002C2083160313861283120313861605";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
             Assert.Equal("RETFIE", parsed.Mnemonics[0].ToString());
+        }
+
+        [Fact]
+        public void ParseCallMnemonic()
+        {
+            var line = ":1000080009002C2083160313861283120313861605";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.IsType(typeof(Call), parsed.Mnemonics[1]);
+        }
+
+        [Fact]
+        public void ReturnsCallToString()
+        {
+            var line = ":1000080009002C2083160313861283120313861605";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.Equal("CALL 0x2C", parsed.Mnemonics[1].ToString());
         }
     }
 }

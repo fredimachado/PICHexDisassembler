@@ -2,18 +2,18 @@
 
 namespace PICHexDisassembler.Instructions
 {
-    public class Goto : Instruction
+    public class Call : Instruction
     {
         private string address;
 
-        public Goto(string data) : base(data)
+        public Call(string data) : base(data)
         {
             address = data.Substring(3);
         }
 
         public override string ToString()
         {
-            return "GOTO 0x" + Convert.ToInt32(address, 2).ToString("X2");
+            return "CALL 0x" + Convert.ToInt32(address, 2).ToString("X2");
         }
     }
 }

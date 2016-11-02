@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PICHexDisassembler
+﻿namespace PICHexDisassembler
 {
     public abstract class Instruction
     {
+        protected readonly string data;
+
+        public Instruction(string data)
+        {
+            this.data = data;
+        }
     }
 }

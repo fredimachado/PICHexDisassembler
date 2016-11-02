@@ -12,10 +12,12 @@ namespace PICHexDisassembler
             DataBytes = dataBytes;
             Checksum = checksum;
 
-            Mnemonics = new[]
+            var wordsCount = byteCount / 2;
+            Mnemonics = new Instruction[wordsCount];
+            for (int i = 0; i < wordsCount; i++)
             {
-                Mnemonic.Parse(DataBytes[0])
-            };
+                Mnemonics[i] = Mnemonic.Parse(dataBytes[i]);
+            }
         }
 
         public int ByteCount { get; }
