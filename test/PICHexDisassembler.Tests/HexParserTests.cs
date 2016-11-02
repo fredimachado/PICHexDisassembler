@@ -121,5 +121,15 @@ namespace PICHexDisassembler.Tests
 
             Assert.IsType(typeof(Retfie), parsed.Mnemonics[0]);
         }
+
+        [Fact]
+        public void ParseRetfieToString()
+        {
+            var line = ":1000080009002C2083160313861283120313861605";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.Equal("RETFIE", parsed.Mnemonics[0].ToString());
+        }
     }
 }
