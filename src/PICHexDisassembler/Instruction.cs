@@ -8,5 +8,10 @@
         {
             this.data = data;
         }
+
+        public override string ToString()
+        {
+            return GetType().Name.ToUpper();
+        }
     }
 }
