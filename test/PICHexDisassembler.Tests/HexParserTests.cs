@@ -151,5 +151,45 @@ namespace PICHexDisassembler.Tests
 
             Assert.Equal("CALL 0x2C", parsed.Mnemonics[1].ToString());
         }
+
+        [Fact]
+        public void ParseBsfMnemonic()
+        {
+            var line = ":1000080009002C2083160313861283120313861605";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.IsType(typeof(Bsf), parsed.Mnemonics[2]);
+        }
+
+        [Fact]
+        public void ReturnsBsfToString()
+        {
+            var line = ":1000080009002C2083160313861283120313861605";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.Equal("BSF 0x03, 0x05", parsed.Mnemonics[2].ToString());
+        }
+
+        [Fact]
+        public void ParseBcfMnemonic()
+        {
+            var line = ":1000080009002C2083160313861283120313861605";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.IsType(typeof(Bcf), parsed.Mnemonics[3]);
+        }
+
+        [Fact]
+        public void ReturnsBcfToString()
+        {
+            var line = ":1000080009002C2083160313861283120313861605";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.Equal("BCF 0x03, 0x06", parsed.Mnemonics[3].ToString());
+        }
     }
 }
