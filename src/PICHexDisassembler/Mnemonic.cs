@@ -15,17 +15,13 @@ namespace PICHexDisassembler
             { 0x1000, 0xFC00, typeof(Bcf) },    // mask: 0001000000000000 opcodeMask: 1111110000000000
         };
 
-        internal static Instruction Parse(byte[] dataBytes)
+        internal static Instruction Parse(short dataBytes)
         {
-            var data1 = dataBytes[0];
-            var data2 = dataBytes[1];
-            var word = (short)(data1 << 8 | data2);
-
             foreach (var item in mnemonicMapping)
             {
-                if ((word & item.Item2) == item.Item1)
+                if ((dataBytes & item.Item2) == item.Item1)
                 {
-                    return (Instruction)Activator.CreateInstance(item.Item3, word);
+                    return (Instruction)Activator.CreateInstance(item.Item3, dataBytes);
                 }
             }
 
