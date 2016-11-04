@@ -10,12 +10,12 @@
             }
 
             var byteCount = byte.Parse(line.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-            var address = int.Parse(line.Substring(2, 4), System.Globalization.NumberStyles.HexNumber);
+            var address = ushort.Parse(line.Substring(2, 4), System.Globalization.NumberStyles.HexNumber);
             var recordType = byte.Parse(line.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
             var checksum = byte.Parse(line.Substring(line.Length - 2), System.Globalization.NumberStyles.HexNumber);
 
             var wordsCount = byteCount / 2;
-            var dataBytes = new short[wordsCount];
+            var dataBytes = new ushort[wordsCount];
 
             for (int i = 0; i < wordsCount; i++)
             {
@@ -27,10 +27,15 @@
             return new Hex32Record(byteCount, address, recordType, dataBytes, checksum);
         }
 
-        private short GetNextTwoBytesReversed(string line, int startIndex)
+        private ushort GetNextTwoBytesReversed(string line, int startIndex)
         {
-            var data = line.Substring(startIndex + 2, 2) + line.Substring(startIndex, 2);
-            return short.Parse(data, System.Globalization.NumberStyles.HexNumber);
+            var value = ushort.Parse(line.Substring(startIndex, 4), System.Globalization.NumberStyles.HexNumber);
+            return ReverseBytes(value);
+        }
+
+        private static ushort ReverseBytes(ushort value)
+        {
+            return (ushort)((value & 0x00FF) << 8 | (value & 0xFF00) >> 8);
         }
     }
 }

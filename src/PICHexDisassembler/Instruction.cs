@@ -26,7 +26,7 @@ namespace PICHexDisassembler
             { 0x1000, 0xFC00, typeof(Bcf) },    // mask: 0001000000000000 opcodeMask: 1111110000000000
         };
 
-        internal static Instruction Parse(short dataBytes)
+        internal static Instruction Parse(ushort dataBytes)
         {
             foreach (var item in instructionMapping)
             {
