@@ -2,7 +2,7 @@
 {
     public class Call : Goto
     {
-        public Call(int data) : base(data)
+        public Call(ushort data) : base(data)
         {
         }
     }

@@ -28,15 +28,5 @@ namespace PICHexDisassembler
         public byte Checksum { get; }
 
         public Instruction[] Instructions { get; }
-
-        public byte GetFirstByteFromIndex(int index)
-        {
-            return (byte)(DataBytes[index] >> 8);
-        }
-
-        public byte GetSecondByteFromIndex(int index)
-        {
-            return (byte)DataBytes[index];
-        }
     }
 }

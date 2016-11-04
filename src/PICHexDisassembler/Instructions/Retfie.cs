@@ -2,7 +2,7 @@
 {
     public class Retfie : Instruction
     {
-        public Retfie(int data) : base(data)
+        public Retfie(ushort data) : base(data)
         {
         }
     }

@@ -2,13 +2,13 @@
 {
     public abstract class BitInstruction : Instruction
     {
-        private readonly int address;
-        private readonly int bit;
+        private readonly ushort address;
+        private readonly byte bit;
 
-        public BitInstruction(int data) : base(data)
+        public BitInstruction(ushort data) : base(data)
         {
-            address = data & 0x007F;
-            bit = (data & 0x0380) >> 7;
+            address = (ushort)(data & 0x007F);
+            bit = (byte)((data & 0x0380) >> 7);
         }
 
         public override string ToString()

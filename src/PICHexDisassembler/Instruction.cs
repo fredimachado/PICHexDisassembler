@@ -5,9 +5,9 @@ namespace PICHexDisassembler
 {
     public abstract class Instruction
     {
-        protected readonly int data;
+        protected readonly ushort data;
 
-        public Instruction(int data)
+        public Instruction(ushort data)
         {
             this.data = data;
         }
@@ -16,6 +16,9 @@ namespace PICHexDisassembler
         {
             return GetType().Name.ToUpper();
         }
+
+        public byte FirstByte => (byte)(data >> 8);
+        public byte SecondByte => (byte)data;
 
         private static InstructionMapping instructionMapping = new InstructionMapping
         {

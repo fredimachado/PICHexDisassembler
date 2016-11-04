@@ -46,14 +46,14 @@ namespace PICHexDisassembler.Tests
         }
 
         [Fact]
-        public void ParseDataBytes()
+        public void ParseInstructionBytes()
         {
             var line = ":020000000528D1";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.Equal(0x28, parsed.GetFirstByteFromIndex(0));
-            Assert.Equal(0x05, parsed.GetSecondByteFromIndex(0));
+            Assert.Equal(0x28, parsed.Instructions[0].FirstByte);
+            Assert.Equal(0x05, parsed.Instructions[0].SecondByte);
         }
 
         [Fact]
@@ -87,29 +87,29 @@ namespace PICHexDisassembler.Tests
             Assert.Equal(8, parsed.Address);
             Assert.Equal(0, parsed.RecordType);
 
-            Assert.Equal(0x00, parsed.GetFirstByteFromIndex(0));
-            Assert.Equal(0x09, parsed.GetSecondByteFromIndex(0));
+            Assert.Equal(0x00, parsed.Instructions[0].FirstByte);
+            Assert.Equal(0x09, parsed.Instructions[0].SecondByte);
 
-            Assert.Equal(0x20, parsed.GetFirstByteFromIndex(1));
-            Assert.Equal(0x2C, parsed.GetSecondByteFromIndex(1));
+            Assert.Equal(0x20, parsed.Instructions[1].FirstByte);
+            Assert.Equal(0x2C, parsed.Instructions[1].SecondByte);
 
-            Assert.Equal(0x16, parsed.GetFirstByteFromIndex(2));
-            Assert.Equal(0x83, parsed.GetSecondByteFromIndex(2));
+            Assert.Equal(0x16, parsed.Instructions[2].FirstByte);
+            Assert.Equal(0x83, parsed.Instructions[2].SecondByte);
 
-            Assert.Equal(0x13, parsed.GetFirstByteFromIndex(3));
-            Assert.Equal(0x03, parsed.GetSecondByteFromIndex(3));
+            Assert.Equal(0x13, parsed.Instructions[3].FirstByte);
+            Assert.Equal(0x03, parsed.Instructions[3].SecondByte);
 
-            Assert.Equal(0x12, parsed.GetFirstByteFromIndex(4));
-            Assert.Equal(0x86, parsed.GetSecondByteFromIndex(4));
+            Assert.Equal(0x12, parsed.Instructions[4].FirstByte);
+            Assert.Equal(0x86, parsed.Instructions[4].SecondByte);
 
-            Assert.Equal(0x12, parsed.GetFirstByteFromIndex(5));
-            Assert.Equal(0x83, parsed.GetSecondByteFromIndex(5));
+            Assert.Equal(0x12, parsed.Instructions[5].FirstByte);
+            Assert.Equal(0x83, parsed.Instructions[5].SecondByte);
 
-            Assert.Equal(0x13, parsed.GetFirstByteFromIndex(6));
-            Assert.Equal(0x03, parsed.GetSecondByteFromIndex(6));
+            Assert.Equal(0x13, parsed.Instructions[6].FirstByte);
+            Assert.Equal(0x03, parsed.Instructions[6].SecondByte);
 
-            Assert.Equal(0x16, parsed.GetFirstByteFromIndex(7));
-            Assert.Equal(0x86, parsed.GetSecondByteFromIndex(7));
+            Assert.Equal(0x16, parsed.Instructions[7].FirstByte);
+            Assert.Equal(0x86, parsed.Instructions[7].SecondByte);
         }
 
         [Fact]

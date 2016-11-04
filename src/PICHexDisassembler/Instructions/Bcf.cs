@@ -2,7 +2,7 @@
 {
     public class Bcf : BitInstruction
     {
-        public Bcf(int data) : base(data)
+        public Bcf(ushort data) : base(data)
         {
         }
     }

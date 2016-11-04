@@ -4,11 +4,11 @@ namespace PICHexDisassembler.Instructions
 {
     public class Goto : Instruction
     {
-        private readonly int address;
+        private readonly ushort address;
 
-        public Goto(int data) : base(data)
+        public Goto(ushort data) : base(data)
         {
-            address = data & 0x01FF;
+            address = (ushort)(data & 0x01FF);
         }
 
         public override string ToString()
