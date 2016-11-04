@@ -57,23 +57,23 @@ namespace PICHexDisassembler.Tests
         }
 
         [Fact]
-        public void ParseGotoMnemonic()
-        {
-            var line = ":020000000528D1";
-            var parser = new HexParser();
-            var parsed = parser.ParseLine(line);
-
-            Assert.IsType(typeof(Goto), parsed.Mnemonics[0]);
-        }
-
-        [Fact]
         public void ParseGotoInstruction()
         {
             var line = ":020000000528D1";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.Equal("GOTO 0x05", parsed.Mnemonics[0].ToString());
+            Assert.IsType(typeof(Goto), parsed.Instructions[0]);
+        }
+
+        [Fact]
+        public void ReturnsGotoInstructionString()
+        {
+            var line = ":020000000528D1";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.Equal("GOTO 0x05", parsed.Instructions[0].ToString());
         }
 
         [Fact]
@@ -113,83 +113,83 @@ namespace PICHexDisassembler.Tests
         }
 
         [Fact]
-        public void ParseRetfieMnemonic()
+        public void ParseRetfieInstruction()
         {
             var line = ":1000080009002C2083160313861283120313861605";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.IsType(typeof(Retfie), parsed.Mnemonics[0]);
+            Assert.IsType(typeof(Retfie), parsed.Instructions[0]);
         }
 
         [Fact]
-        public void ReturnsRetfieToString()
+        public void ReturnsRetfieInstructionString()
         {
             var line = ":1000080009002C2083160313861283120313861605";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.Equal("RETFIE", parsed.Mnemonics[0].ToString());
+            Assert.Equal("RETFIE", parsed.Instructions[0].ToString());
         }
 
         [Fact]
-        public void ParseCallMnemonic()
+        public void ParseCallInstruction()
         {
             var line = ":1000080009002C2083160313861283120313861605";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.IsType(typeof(Call), parsed.Mnemonics[1]);
+            Assert.IsType(typeof(Call), parsed.Instructions[1]);
         }
 
         [Fact]
-        public void ReturnsCallToString()
+        public void ReturnsCallInstructionString()
         {
             var line = ":1000080009002C2083160313861283120313861605";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.Equal("CALL 0x2C", parsed.Mnemonics[1].ToString());
+            Assert.Equal("CALL 0x2C", parsed.Instructions[1].ToString());
         }
 
         [Fact]
-        public void ParseBsfMnemonic()
+        public void ParseBsfInstruction()
         {
             var line = ":1000080009002C2083160313861283120313861605";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.IsType(typeof(Bsf), parsed.Mnemonics[2]);
+            Assert.IsType(typeof(Bsf), parsed.Instructions[2]);
         }
 
         [Fact]
-        public void ReturnsBsfToString()
+        public void ReturnsBsfInstructionString()
         {
             var line = ":1000080009002C2083160313861283120313861605";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.Equal("BSF 0x03, 0x05", parsed.Mnemonics[2].ToString());
+            Assert.Equal("BSF 0x03, 0x05", parsed.Instructions[2].ToString());
         }
 
         [Fact]
-        public void ParseBcfMnemonic()
+        public void ParseBcfInstruction()
         {
             var line = ":1000080009002C2083160313861283120313861605";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.IsType(typeof(Bcf), parsed.Mnemonics[3]);
+            Assert.IsType(typeof(Bcf), parsed.Instructions[3]);
         }
 
         [Fact]
-        public void ReturnsBcfToString()
+        public void ReturnsBcfInstructionString()
         {
             var line = ":1000080009002C2083160313861283120313861605";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.Equal("BCF 0x03, 0x06", parsed.Mnemonics[3].ToString());
+            Assert.Equal("BCF 0x03, 0x06", parsed.Instructions[3].ToString());
         }
     }
 }

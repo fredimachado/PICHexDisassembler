@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PICHexDisassembler
 {
-    public class MnemonicMapping : List<Tuple<int, int, Type>>
+    public class InstructionMapping : List<Tuple<int, int, Type>>
     {
         public void Add(int mask, int opcodeMask, Type type)
         {
