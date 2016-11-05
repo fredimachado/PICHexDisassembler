@@ -13,7 +13,10 @@
 
         public override string ToString()
         {
-            return $"{GetType().Name.ToUpper()} 0x{address:X2}, 0x{bit:X2}";
+            var register = Registers[address] ?? $"0x{address:X2}";
+            var bitDescription = Bits[register]?[bit] ?? $"0x{bit:X2}";
+
+            return $"{GetType().Name.ToUpper()} {register}, {bitDescription}";
         }
     }
 }

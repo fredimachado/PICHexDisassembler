@@ -1,5 +1,6 @@
 ﻿using PICHexDisassembler.Instructions;
 using System;
+using System.Collections.Generic;
 
 namespace PICHexDisassembler
 {
@@ -41,5 +42,15 @@ namespace PICHexDisassembler
 
             return Unknown.Instance;
         }
+
+        public static Dictionary<int, string> Registers = new Dictionary<int, string>
+        {
+            { 0x03, "STATUS" },
+        };
+
+        public static Dictionary<string, string[]> Bits = new Dictionary<string, string[]>
+        {
+            { "STATUS", new[] { "C", "DC", "Z", "/PD", "/TO", "RP0", "RP1", "IRP" } },
+        };
     }
 }

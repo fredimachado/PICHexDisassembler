@@ -169,7 +169,7 @@ namespace PICHexDisassembler.Tests
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.Equal("BSF 0x03, 0x05", parsed.Instructions[2].ToString());
+            Assert.Equal("BSF STATUS, RP0", parsed.Instructions[2].ToString());
         }
 
         [Fact]
@@ -189,7 +189,7 @@ namespace PICHexDisassembler.Tests
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.Equal("BCF 0x03, 0x06", parsed.Instructions[3].ToString());
+            Assert.Equal("BCF STATUS, RP1", parsed.Instructions[3].ToString());
         }
     }
 }
