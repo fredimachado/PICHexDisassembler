@@ -191,5 +191,24 @@ namespace PICHexDisassembler.Tests
 
             Assert.Equal("BCF STATUS, RP1", parsed.Instructions[3].ToString());
         }
+
+        [Fact]
+        public void ParseDataAndReturnsTheSourceCode()
+        {
+            var line = ":1000080009002C2083160313861283120313861605";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            var asm = @"RETFIE
+CALL 0x2C
+BSF STATUS, RP0
+BCF STATUS, RP1
+BCF PORTB, RB5
+BCF STATUS, RP0
+BCF STATUS, RP1
+BSF PORTB, RB5";
+
+            Assert.Equal(asm, parsed.ToString());
+        }
     }
 }

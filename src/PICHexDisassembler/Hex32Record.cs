@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using PICHexDisassembler.Instructions;
+using System.Linq;
 
 namespace PICHexDisassembler
 {
@@ -28,5 +29,10 @@ namespace PICHexDisassembler
         public byte Checksum { get; }
 
         public Instruction[] Instructions { get; }
+
+        public override string ToString()
+        {
+            return string.Join("\r\n", Instructions.Select(m => m.ToString()));
+        }
     }
 }

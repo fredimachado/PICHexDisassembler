@@ -45,12 +45,24 @@ namespace PICHexDisassembler
 
         public static Dictionary<int, string> Registers = new Dictionary<int, string>
         {
+            { 0x00, "INDF" },
+            { 0x01, "TMR0" },
+            { 0x02, "PCL" },
             { 0x03, "STATUS" },
+            { 0x04, "FSR" },
+            { 0x05, "PORTA" },
+            { 0x06, "PORTB" },
+            { 0x08, "EEDATA" },
+            { 0x09, "EEADR" },
+            { 0x0A, "PCLATH" },
+            { 0x0B, "INTCON" },
         };
 
         public static Dictionary<string, string[]> Bits = new Dictionary<string, string[]>
         {
             { "STATUS", new[] { "C", "DC", "Z", "/PD", "/TO", "RP0", "RP1", "IRP" } },
+            { "PORTA", new[] { "RA0", "RA1", "RA2", "RA3", "RA4/T0CKI" } },
+            { "PORTB", new[] { "RB0", "RB1", "RB2", "RB3", "RB4", "RB5", "RB6", "RB7"} },
         };
     }
 }
