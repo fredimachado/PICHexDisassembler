@@ -1,7 +1,21 @@
-﻿namespace PICHexDisassembler
+﻿using System.Collections.Generic;
+
+namespace PICHexDisassembler
 {
     public class HexParser
     {
+        public Hex32RecordCollection ParseLines(string[] lines)
+        {
+            var records = new Hex32RecordCollection();
+
+            foreach (var line in lines)
+            {
+                records.Add(ParseLine(line));
+            }
+
+            return records;
+        }
+
         public Hex32Record ParseLine(string line)
         {
             if (line.StartsWith(":"))

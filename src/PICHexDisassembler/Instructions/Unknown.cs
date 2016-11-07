@@ -14,5 +14,10 @@
         }
 
         public static Unknown Instance => instance;
+
+        public override string ToString()
+        {
+            return string.Empty;
+        }
     }
 }

@@ -220,5 +220,22 @@ BSF PORTB, RB5";
 
             Assert.Equal("ORG 0x0000", parsed.ToString());
         }
+
+        [Fact]
+        public void ParseData()
+        {
+            var hex = @":020000001228C4
+:08000800A000030E8312A10009";
+            var parser = new HexParser();
+            var parsed = parser.ParseLines(hex.Split(new[] { "\r\n" }, System.StringSplitOptions.RemoveEmptyEntries));
+
+            var asm = @"GOTO 0x12
+MOVWF 0x20
+SWAPF STATUS, W
+BCF STATUS, RP0
+MOVWF 0x21";
+
+            Assert.Equal(asm, parsed.ToString());
+        }
     }
 }
