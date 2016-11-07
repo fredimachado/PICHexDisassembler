@@ -10,7 +10,7 @@ namespace PICHexDisassembler
         {
             ByteCount = byteCount;
             Address = address;
-            RecordType = recordType;
+            RecordType = (RecordType)recordType;
             DataBytes = dataBytes;
             Checksum = checksum;
 
@@ -24,7 +24,7 @@ namespace PICHexDisassembler
 
         public byte ByteCount { get; }
         public int Address { get; }
-        public byte RecordType { get; }
+        public RecordType RecordType { get; }
         public ushort[] DataBytes { get; }
         public byte Checksum { get; }
 
@@ -32,7 +32,22 @@ namespace PICHexDisassembler
 
         public override string ToString()
         {
+            if (RecordType == RecordType.ExtendedLinearAddress)
+            {
+                return $"ORG 0x{Address:X4}";
+            }
+
             return string.Join("\r\n", Instructions.Select(m => m.ToString()));
         }
+    }
+
+    public enum RecordType
+    {
+        Data = 0,
+        EndOfFile,
+        ExtendedSegmentAddress,
+        StartSegmentAddress,
+        ExtendedLinearAddress,
+        StartLinearAddress
     }
 }

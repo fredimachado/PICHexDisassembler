@@ -32,7 +32,7 @@ namespace PICHexDisassembler.Tests
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.Equal(0, parsed.RecordType);
+            Assert.Equal(RecordType.Data, parsed.RecordType);
         }
 
         [Fact]
@@ -85,7 +85,7 @@ namespace PICHexDisassembler.Tests
 
             Assert.Equal(16, parsed.ByteCount);
             Assert.Equal(8, parsed.Address);
-            Assert.Equal(0, parsed.RecordType);
+            Assert.Equal(RecordType.Data, parsed.RecordType);
 
             Assert.Equal(0x00, parsed.Instructions[0].FirstByte);
             Assert.Equal(0x09, parsed.Instructions[0].SecondByte);
@@ -209,6 +209,16 @@ BCF STATUS, RP1
 BSF PORTB, RB5";
 
             Assert.Equal(asm, parsed.ToString());
+        }
+
+        [Fact]
+        public void ParseORGDirective()
+        {
+            var line = ":020000040000FA";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.Equal("ORG 0x0000", parsed.ToString());
         }
     }
 }
