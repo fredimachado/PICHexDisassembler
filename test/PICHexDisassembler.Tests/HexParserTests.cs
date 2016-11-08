@@ -256,5 +256,24 @@ SWAPF 0x20, W";
 
             Assert.Equal(asm, parsed.ToString());
         }
+
+        [Fact]
+        public void ParseData3()
+        {
+            var line = ":10002000200E09008316BF3081000F308500831237";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            var asm = @"SWAPF 0x20, W
+RETFIE
+BSF STATUS, RP0
+MOVLW 0xBF
+MOVWF 0x01
+MOVLW 0x0F
+MOVWF 0x05
+BCF STATUS, RP0";
+
+            Assert.Equal(asm, parsed.ToString());
+        }
     }
 }
