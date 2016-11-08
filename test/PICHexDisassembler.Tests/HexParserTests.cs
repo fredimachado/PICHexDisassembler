@@ -275,5 +275,41 @@ BCF STATUS, RP0";
 
             Assert.Equal(asm, parsed.ToString());
         }
+
+        [Fact]
+        public void ParseData4()
+        {
+            var line = ":0A003000850090308B0064001B284F";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            var asm = @"MOVWF 0x05
+MOVLW 0x90
+MOVWF 0x0B
+CLRWDT
+GOTO 0x1B";
+
+            Assert.Equal(asm, parsed.ToString());
+        }
+
+        [Fact]
+        public void ParseData5()
+        {
+            var line = ":02400E008C3FE5";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.Equal("__CONFIG 0x3F8C", parsed.ToString());
+        }
+
+        [Fact]
+        public void ParseEnd()
+        {
+            var line = ":00000001FF";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            Assert.Equal("END", parsed.ToString());
+        }
     }
 }

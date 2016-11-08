@@ -32,6 +32,7 @@ namespace PICHexDisassembler
             { 0x0E00, 0xFF00, typeof(Swapf) },  // mask: 0000111000000000 opcodeMask: 1111111100000000
             { 0x1C00, 0xFC00, typeof(Btfss) },  // mask: 0001110000000000 opcodeMask: 1111110000000000
             { 0x3000, 0xFC00, typeof(Movlw) },  // mask: 0011000000000000 opcodeMask: 1111110000000000
+            { 0x0064, 0xFFFF, typeof(Clrwdt) }, // mask: 0000000001100100 opcodeMask: 1111111111111111
         };
 
         internal static Instruction Parse(ushort dataBytes)

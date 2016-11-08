@@ -32,9 +32,19 @@ namespace PICHexDisassembler
 
         public override string ToString()
         {
+            if (RecordType == RecordType.EndOfFile)
+            {
+                return "END";
+            }
+
             if (RecordType == RecordType.ExtendedLinearAddress)
             {
                 return $"ORG 0x{Address:X4}";
+            }
+
+            if (Address == 0x400E) // CONFIG
+            {
+                return $"__CONFIG 0x{DataBytes[0]:X4}";
             }
 
             return string.Join("\r\n", Instructions.Select(m => m.ToString()));
