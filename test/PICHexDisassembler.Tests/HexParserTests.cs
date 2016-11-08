@@ -237,5 +237,24 @@ MOVWF 0x21";
 
             Assert.Equal(asm, parsed.ToString());
         }
+
+        [Fact]
+        public void ParseData2()
+        {
+            var line = ":100010008B1C0D288B1005168516210E8300A00E53";
+            var parser = new HexParser();
+            var parsed = parser.ParseLine(line);
+
+            var asm = @"BTFSS INTCON, INTF
+GOTO 0x0D
+BCF INTCON, INTF
+BSF PORTA, RA4
+BSF PORTA, RA5
+SWAPF 0x21, W
+MOVWF 0x03
+SWAPF 0x20, W";
+
+            Assert.Equal(asm, parsed.ToString());
+        }
     }
 }

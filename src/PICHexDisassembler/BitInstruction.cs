@@ -13,8 +13,8 @@
 
         public override string ToString()
         {
-            var register = BankRegisterFiles[address] ?? $"0x{address:X2}";
-            var bitDescription = Bits[register]?[bit] ?? $"0x{bit:X2}";
+            var register = BankRegisterFiles.ContainsKey(address) ? BankRegisterFiles[address] : $"0x{address:X2}";
+            var bitDescription = Bits.ContainsKey(register) ? Bits[register][bit] : $"0x{bit:X2}";
 
             return $"{GetType().Name.ToUpper()} {register}, {bitDescription}";
         }

@@ -30,6 +30,7 @@ namespace PICHexDisassembler
             { 0x1000, 0xFC00, typeof(Bcf) },    // mask: 0001000000000000 opcodeMask: 1111110000000000
             { 0x0080, 0xFF80, typeof(Movwf) },  // mask: 0000000010000000 opcodeMask: 1111111110000000
             { 0x0E00, 0xFF00, typeof(Swapf) },  // mask: 0000111000000000 opcodeMask: 1111111100000000
+            { 0x1C00, 0xFC00, typeof(Btfss) },  // mask: ‭0001110000000000‬ opcodeMask: 1111110000000000
         };
 
         internal static Instruction Parse(ushort dataBytes)
@@ -95,6 +96,7 @@ namespace PICHexDisassembler
             { "STATUS", new[] { "C", "DC", "Z", "NOT_PD", "NOT_TO", "RP0", "RP1", "IRP" } },
             { "PORTA", new[] { "RA0", "RA1", "RA2", "RA3", "RA4", "RA5", "RA6", "RA7" } },
             { "PORTB", new[] { "RB0", "RB1", "RB2", "RB3", "RB4", "RB5", "RB6", "RB7"} },
+            { "INTCON", new[] { "RBIF", "INTF", "T0IF", "RBIE", "INTE", "T0IE", "PEIE", "GIE" } },
         };
     }
 }

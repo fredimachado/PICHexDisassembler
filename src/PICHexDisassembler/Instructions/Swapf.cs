@@ -13,8 +13,8 @@
 
         public override string ToString()
         {
-            var register = BankRegisterFiles[address] ?? $"0x{address:X2}";
-            var destinationRegister = Registers[destination] ?? destination.ToString();
+            var register = BankRegisterFiles.ContainsKey(address) ? BankRegisterFiles[address] : $"0x{address:X2}";
+            var destinationRegister = Registers.ContainsKey(destination)? Registers[destination] : destination.ToString();
 
             return $"SWAPF {register}, {destinationRegister}";
         }
