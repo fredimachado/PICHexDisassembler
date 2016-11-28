@@ -1,4 +1,4 @@
-# PICHexDisassembler
+# PICHexDisassembler [![Build status](https://ci.appveyor.com/api/projects/status/hor0qtsu18fot39o?svg=true) ![Test status](http://teststatusbadge.azurewebsites.net/api/status/Fredi/pichexdisassembler)](https://ci.appveyor.com/project/Fredi/pichexdisassembler)
 Simple Hex disassembler for PIC 16FXXX microcontrollers
 
 ## About the PIC HEX format (I32HEX)
