@@ -3,18 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D7D96760-3383-43E9-ACC1-7F4834366DE4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A0F2A2E1-6686-4893-8F9C-737008BE11D4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{33F5EDED-BC02-48A2-AAD0-CCA598405978}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{045CD4D8-5633-4555-99E3-D2B5C220095F}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PICHexDisassembler", "src\PICHexDisassembler\PICHexDisassembler.xproj", "{A5760AAF-DAC6-4005-B023-B0BDA94FCD9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PICHexDisassembler", "src\PICHexDisassembler\PICHexDisassembler.csproj", "{4B4BB010-6996-4365-A0B5-26A547267703}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D6F04519-27D9-4DD7-81D3-0A6BC306937A}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PICHexDisassembler.Tests", "test\PICHexDisassembler.Tests\PICHexDisassembler.Tests.xproj", "{90611C1B-A481-4B35-8C18-CA006C286DC7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{78D0435C-B82C-4E27-904B-3F0F8297E243}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +22,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A5760AAF-DAC6-4005-B023-B0BDA94FCD9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5760AAF-DAC6-4005-B023-B0BDA94FCD9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5760AAF-DAC6-4005-B023-B0BDA94FCD9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5760AAF-DAC6-4005-B023-B0BDA94FCD9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B4BB010-6996-4365-A0B5-26A547267703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B4BB010-6996-4365-A0B5-26A547267703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B4BB010-6996-4365-A0B5-26A547267703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B4BB010-6996-4365-A0B5-26A547267703}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90611C1B-A481-4B35-8C18-CA006C286DC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90611C1B-A481-4B35-8C18-CA006C286DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90611C1B-A481-4B35-8C18-CA006C286DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,7 +35,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A5760AAF-DAC6-4005-B023-B0BDA94FCD9A} = {D7D96760-3383-43E9-ACC1-7F4834366DE4}
-		{90611C1B-A481-4B35-8C18-CA006C286DC7} = {78D0435C-B82C-4E27-904B-3F0F8297E243}
+		{4B4BB010-6996-4365-A0B5-26A547267703} = {A0F2A2E1-6686-4893-8F9C-737008BE11D4}
+		{90611C1B-A481-4B35-8C18-CA006C286DC7} = {D6F04519-27D9-4DD7-81D3-0A6BC306937A}
 	EndGlobalSection
 EndGlobal

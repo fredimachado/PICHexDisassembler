@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
 
   "dependencies": {
@@ -7,8 +7,7 @@
       "version": "1.0.1"
     },
     "xunit": "2.2.0-beta3-build3402",
-    "dotnet-test-xunit": "1.0.0-rc2-build10025",
-    "PICHexDisassembler": "1.0.0-*"
+    "dotnet-test-xunit": "1.0.0-rc2-build10025"
   },
 
   "frameworks": {
@@ -17,7 +16,12 @@
         "netstandardapp1.5",
         "dotnet5.4",
         "portable-net451+win8"
-      ]
+      ],
+      "dependencies": {
+        "PICHexDisassembler": {
+          "target": "project"
+        }
+      }
     }
   },
   "testRunner": "xunit"
