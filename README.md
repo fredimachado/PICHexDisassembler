@@ -16,6 +16,9 @@ A record (line of text) consists of six fields (parts) that appear in order from
 
 **_Reference: https://en.wikipedia.org/wiki/Intel_HEX_**
 
+## Contribution
+Just send a pull request! :)
+
 ## License
 Copyright (c) 2016 Fredi Machado. See the LICENSE file for license rights and
 limitations (MIT).
