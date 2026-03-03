@@ -6,5 +6,6 @@
     <Compile Remove="Properties\**" />
     <EmbeddedResource Remove="Properties\**" />
     <None Remove="Properties\**" />
+    <InternalsVisibleTo Include="PICHexDisassembler.Tests" />
   </ItemGroup>
 </Project>
