@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace PICHexDisassembler
 {
@@ -23,10 +23,37 @@ namespace PICHexDisassembler
                 line = line.Substring(1);
             }
 
+            if (line.Length < 10)
+            {
+                throw new System.FormatException("HEX record is too short.");
+            }
+
             var byteCount = byte.Parse(line.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
             var address = ushort.Parse(line.Substring(2, 4), System.Globalization.NumberStyles.HexNumber);
             var recordType = byte.Parse(line.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
             var checksum = byte.Parse(line.Substring(line.Length - 2), System.Globalization.NumberStyles.HexNumber);
+
+            var expectedDataChars = byteCount * 2;
+            var actualDataChars = line.Length - 10; // 2 count + 4 address + 2 type + 2 checksum
+
+            if (actualDataChars != expectedDataChars)
+            {
+                throw new System.FormatException("HEX record byte count does not match data length.");
+            }
+
+            // checksum is such that the sum of all bytes (including checksum) is 0 (mod 256)
+            byte computedChecksum = 0;
+            for (int i = 0; i < line.Length - 2; i += 2)
+            {
+                computedChecksum += byte.Parse(line.Substring(i, 2), System.Globalization.NumberStyles.HexNumber);
+            }
+
+            computedChecksum = (byte)(~computedChecksum + 1);
+
+            if (computedChecksum != checksum)
+            {
+                throw new System.FormatException("HEX record checksum is invalid.");
+            }
 
             var wordsCount = byteCount / 2;
             var dataBytes = new ushort[wordsCount];

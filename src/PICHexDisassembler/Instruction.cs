@@ -1,4 +1,4 @@
-﻿using PICHexDisassembler.Instructions;
+using PICHexDisassembler.Instructions;
 using System;
 using System.Collections.Generic;
 
@@ -23,16 +23,46 @@ namespace PICHexDisassembler
 
         private static InstructionMapping instructionMapping = new InstructionMapping
         {
-            { 0x2800, 0xF800, typeof(Goto) },   // mask: 0010100000000000 opcodeMask: 1111100000000000
-            { 0x2000, 0xF800, typeof(Call) },   // mask: 0010000000000000 opcodeMask: 1111100000000000
-            { 0x0009, 0xFFFF, typeof(Retfie) }, // mask: 0000000000001001 opcodeMask: 1111111111111111
-            { 0x1400, 0xFC00, typeof(Bsf) },    // mask: 0001010000000000 opcodeMask: 1111110000000000
-            { 0x1000, 0xFC00, typeof(Bcf) },    // mask: 0001000000000000 opcodeMask: 1111110000000000
-            { 0x0080, 0xFF80, typeof(Movwf) },  // mask: 0000000010000000 opcodeMask: 1111111110000000
-            { 0x0E00, 0xFF00, typeof(Swapf) },  // mask: 0000111000000000 opcodeMask: 1111111100000000
-            { 0x1C00, 0xFC00, typeof(Btfss) },  // mask: 0001110000000000 opcodeMask: 1111110000000000
-            { 0x3000, 0xFC00, typeof(Movlw) },  // mask: 0011000000000000 opcodeMask: 1111110000000000
-            { 0x0064, 0xFFFF, typeof(Clrwdt) }, // mask: 0000000001100100 opcodeMask: 1111111111111111
+            // Control / literal and miscellaneous
+            { 0x0000, 0xFFFF, typeof(Nop) },
+            { 0x0008, 0xFFFF, typeof(Return) },
+            { 0x0009, 0xFFFF, typeof(Retfie) },
+            { 0x0063, 0xFFFF, typeof(Sleep) },
+            { 0x0064, 0xFFFF, typeof(Clrwdt) },
+            { 0x2000, 0xF800, typeof(Call) },
+            { 0x2800, 0xF800, typeof(Goto) },
+            { 0x3000, 0x3F00, typeof(Movlw) },
+            { 0x3400, 0x3F00, typeof(Retlw) },
+            { 0x3800, 0x3F00, typeof(Iorlw) },
+            { 0x3900, 0x3F00, typeof(Andlw) },
+            { 0x3A00, 0x3F00, typeof(Xorlw) },
+            { 0x3C00, 0x3F00, typeof(Sublw) },
+            { 0x3E00, 0x3F00, typeof(Addlw) },
+
+            // Bit-oriented
+            { 0x1000, 0x3C00, typeof(Bcf) },
+            { 0x1400, 0xFC00, typeof(Bsf) },
+            { 0x1800, 0x3C00, typeof(Btfsc) },
+            { 0x1C00, 0xFC00, typeof(Btfss) },
+
+            // Byte-oriented
+            { 0x0080, 0xFF80, typeof(Movwf) },
+            { 0x0180, 0xFF80, typeof(Clrf) },
+            { 0x0100, 0xFFFF, typeof(Clrw) },
+            { 0x0200, 0x3F00, typeof(Subwf) },
+            { 0x0300, 0x3F00, typeof(Decf) },
+            { 0x0400, 0x3F00, typeof(Iorwf) },
+            { 0x0500, 0x3F00, typeof(Andwf) },
+            { 0x0600, 0x3F00, typeof(Xorwf) },
+            { 0x0700, 0x3F00, typeof(Addwf) },
+            { 0x0800, 0x3F00, typeof(Movf) },
+            { 0x0900, 0x3F00, typeof(Comf) },
+            { 0x0A00, 0x3F00, typeof(Incf) },
+            { 0x0B00, 0x3F00, typeof(Decfsz) },
+            { 0x0C00, 0x3F00, typeof(Rrf) },
+            { 0x0D00, 0x3F00, typeof(Rlf) },
+            { 0x0E00, 0xFF00, typeof(Swapf) },
+            { 0x0F00, 0x3F00, typeof(Incfsz) },
         };
 
         internal static Instruction Parse(ushort dataBytes)

@@ -1,4 +1,4 @@
-﻿using PICHexDisassembler.Instructions;
+using PICHexDisassembler.Instructions;
 using Xunit;
 
 namespace PICHexDisassembler.Tests
@@ -199,14 +199,16 @@ namespace PICHexDisassembler.Tests
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            var asm = @"RETFIE
-CALL 0x2C
-BSF STATUS, RP0
-BCF STATUS, RP1
-BCF PORTB, RB5
-BCF STATUS, RP0
-BCF STATUS, RP1
-BSF PORTB, RB5";
+            var asm = """
+                      RETFIE
+                      CALL 0x2C
+                      BSF STATUS, RP0
+                      BCF STATUS, RP1
+                      BCF PORTB, RB5
+                      BCF STATUS, RP0
+                      BCF STATUS, RP1
+                      BSF PORTB, RB5
+                      """;
 
             Assert.Equal(asm, parsed.ToString());
         }
@@ -224,16 +226,20 @@ BSF PORTB, RB5";
         [Fact]
         public void ParseData()
         {
-            var hex = @":020000001228C4
-:08000800A000030E8312A10009";
+            var hex = """
+                      :020000001228C4
+                      :08000800A000030E8312A10009
+                      """;
             var parser = new HexParser();
             var parsed = parser.ParseLines(hex.Split(new[] { "\r\n" }, System.StringSplitOptions.RemoveEmptyEntries));
 
-            var asm = @"GOTO 0x12
-MOVWF 0x20
-SWAPF STATUS, W
-BCF STATUS, RP0
-MOVWF 0x21";
+            var asm = """
+                      GOTO 0x12
+                      MOVWF 0x20
+                      SWAPF STATUS, W
+                      BCF STATUS, RP0
+                      MOVWF 0x21
+                      """;
 
             Assert.Equal(asm, parsed.ToString());
         }
@@ -245,14 +251,16 @@ MOVWF 0x21";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            var asm = @"BTFSS INTCON, INTF
-GOTO 0x0D
-BCF INTCON, INTF
-BSF PORTA, RA4
-BSF PORTA, RA5
-SWAPF 0x21, W
-MOVWF 0x03
-SWAPF 0x20, W";
+            var asm = """
+                      BTFSS INTCON, INTF
+                      GOTO 0x0D
+                      BCF INTCON, INTF
+                      BSF PORTA, RA4
+                      BSF PORTA, RA5
+                      SWAPF 0x21, W
+                      MOVWF 0x03
+                      SWAPF 0x20, W
+                      """;
 
             Assert.Equal(asm, parsed.ToString());
         }
@@ -264,14 +272,16 @@ SWAPF 0x20, W";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            var asm = @"SWAPF 0x20, W
-RETFIE
-BSF STATUS, RP0
-MOVLW 0xBF
-MOVWF 0x01
-MOVLW 0x0F
-MOVWF 0x05
-BCF STATUS, RP0";
+            var asm = """
+                      SWAPF 0x20, W
+                      RETFIE
+                      BSF STATUS, RP0
+                      MOVLW 0xBF
+                      MOVWF 0x01
+                      MOVLW 0x0F
+                      MOVWF 0x05
+                      BCF STATUS, RP0
+                      """;
 
             Assert.Equal(asm, parsed.ToString());
         }
@@ -283,11 +293,13 @@ BCF STATUS, RP0";
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            var asm = @"MOVWF 0x05
-MOVLW 0x90
-MOVWF 0x0B
-CLRWDT
-GOTO 0x1B";
+            var asm = """
+                      MOVWF 0x05
+                      MOVLW 0x90
+                      MOVWF 0x0B
+                      CLRWDT
+                      GOTO 0x1B
+                      """;
 
             Assert.Equal(asm, parsed.ToString());
         }
