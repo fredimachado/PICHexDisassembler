@@ -1,20 +1,15 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A0F2A2E1-6686-4893-8F9C-737008BE11D4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{045CD4D8-5633-4555-99E3-D2B5C220095F}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PICHexDisassembler", "src\PICHexDisassembler\PICHexDisassembler.csproj", "{4B4BB010-6996-4365-A0B5-26A547267703}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D6F04519-27D9-4DD7-81D3-0A6BC306937A}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PICHexDisassembler.Tests", "test\PICHexDisassembler.Tests\PICHexDisassembler.Tests.xproj", "{90611C1B-A481-4B35-8C18-CA006C286DC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PICHexDisassembler", "src\PICHexDisassembler\PICHexDisassembler.csproj", "{4B4BB010-6996-4365-A0B5-26A547267703}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PICHexDisassembler.Tests", "test\PICHexDisassembler.Tests\PICHexDisassembler.Tests.csproj", "{90611C1B-A481-4B35-8C18-CA006C286DC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,5 +32,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4B4BB010-6996-4365-A0B5-26A547267703} = {A0F2A2E1-6686-4893-8F9C-737008BE11D4}
 		{90611C1B-A481-4B35-8C18-CA006C286DC7} = {D6F04519-27D9-4DD7-81D3-0A6BC306937A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {881764C6-56AB-4A28-B6A4-0249A9A882FE}
 	EndGlobalSection
 EndGlobal

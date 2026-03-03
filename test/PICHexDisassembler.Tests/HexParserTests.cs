@@ -63,7 +63,7 @@ namespace PICHexDisassembler.Tests
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.IsType(typeof(Goto), parsed.Instructions[0]);
+            Assert.IsType<Goto>(parsed.Instructions[0]);
         }
 
         [Fact]
@@ -119,7 +119,7 @@ namespace PICHexDisassembler.Tests
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.IsType(typeof(Retfie), parsed.Instructions[0]);
+            Assert.IsType<Retfie>(parsed.Instructions[0]);
         }
 
         [Fact]
@@ -139,7 +139,7 @@ namespace PICHexDisassembler.Tests
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.IsType(typeof(Call), parsed.Instructions[1]);
+            Assert.IsType<Call>(parsed.Instructions[1]);
         }
 
         [Fact]
@@ -159,7 +159,7 @@ namespace PICHexDisassembler.Tests
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.IsType(typeof(Bsf), parsed.Instructions[2]);
+            Assert.IsType<Bsf>(parsed.Instructions[2]);
         }
 
         [Fact]
@@ -179,7 +179,7 @@ namespace PICHexDisassembler.Tests
             var parser = new HexParser();
             var parsed = parser.ParseLine(line);
 
-            Assert.IsType(typeof(Bcf), parsed.Instructions[3]);
+            Assert.IsType<Bcf>(parsed.Instructions[3]);
         }
 
         [Fact]
